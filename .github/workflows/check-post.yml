@@ -1,0 +1,41 @@
+name: MP Post Checker
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'   # minden 5. percben
+  workflow_dispatch:         # kézi indítás lehetőség
+
+jobs:
+  check-post:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    # Cache a legutolsó posztnak
+    - name: Restore last post cache
+      uses: actions/cache@v3
+      with:
+        path: last_post.txt
+        key: last-post-cache
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.x"
+
+    - name: Install dependencies
+      run: |
+        pip install requests beautifulsoup4
+
+    - name: Run post checker
+      run: python check_post.py
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+
+    # Cache újra mentése
+    - name: Save last post cache
+      uses: actions/cache@v3
+      with:
+        path: last_post.txt
+        key: last-post-cache
