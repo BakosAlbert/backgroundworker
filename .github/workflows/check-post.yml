@@ -29,7 +29,7 @@ jobs:
         pip install requests beautifulsoup4
 
     - name: Run post checker
-      run: poster.py
+      run: sender.py
       env:
         DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
 
