@@ -41,4 +41,4 @@ jobs:
         key: last-post-cache
 
     - name: Debug
-      run: echo "Workflow triggered at &(date)"
+      run: echo "Workflow triggered at $(date)"
