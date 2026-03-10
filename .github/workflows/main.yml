@@ -39,3 +39,6 @@ jobs:
       with:
         path: last_post.txt
         key: last-post-cache
+
+    - name: Debug
+      run: echo "Workflow triggered at &(date)"
