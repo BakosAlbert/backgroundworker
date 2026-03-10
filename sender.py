@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import os
 
 URL = "https://www.facebook.com/peter.magyar.102"
-WEBHOOK = os.getenv("https://discord.com/api/webhooks/1480701425938858161/2ax8WEFTlTtQndN9QqqymEyIr6ZvcyrqG97KcDWCw8RoGPgML8Ekd4r8UMhOfgmJE2AE")
+WEBHOOK = os.getenv("DISCORD_WEBHOOK")
 
 # GitHub Actions cache-ből olvassuk az utolsó posztot
 try:
